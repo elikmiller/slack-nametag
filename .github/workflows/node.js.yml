@@ -9,6 +9,14 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  SLACK_APP_ID: ${{ secrets.SLACK_APP_ID }}
+  SLACK_CLIENT_ID: ${{ secrets.SLACK_APP_ID }}
+  SLACK_CLIENT_SECRET: ${{ secrets.SLACK_APP_ID }}
+  SLACK_SIGNING_SECRET: ${{ secrets.SLACK_APP_ID }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_APP_ID }}
+
+
 jobs:
   build:
 
