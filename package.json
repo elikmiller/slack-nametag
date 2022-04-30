@@ -1,0 +1,38 @@
+{
+  "name": "slack-nametag",
+  "version": "0.0.0",
+  "author": {
+    "name": "Eli K Miller",
+    "email": "eli@elikmiller.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "description": "Generate printable nametags for users in your Slack workspace",
+  "main": "index.js",
+  "dependencies": {
+    "@slack/bolt": "^3.11.0",
+    "dotenv": "^16.0.0",
+    "lodash": "^4.17.21",
+    "next": "^12.1.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.1.2",
+    "@types/node": "17.0.24",
+    "@types/react": "18.0.5",
+    "@types/react-dom": "18.0.1",
+    "autoprefixer": "^10.4.5",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5",
+    "postcss": "^8.4.13",
+    "tailwindcss": "^3.0.24",
+    "typescript": "4.6.3"
+  }
+}
