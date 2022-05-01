@@ -4,8 +4,14 @@ import getUsers from "../util/getUsers";
 import getTeamIcon from "../util/getTeamIcon";
 import generateUsers from "../util/generateUsers";
 import CenteredLayout from "../components/CenteredLayout";
+import Input from "../components/Input";
+import Drawer from "../components/Drawer";
+import ToggleSwitch from "../components/ToggleSwitch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function HomePage({ users, teamIcon }) {
+  const [drawerOpen, setDrawerOpen] = useState(true);
   const [rows, setRows] = useState(3);
   const [columns, setColumns] = useState(2);
   const [pageHeight, setPageHeight] = useState(11);
@@ -20,7 +26,7 @@ function HomePage({ users, teamIcon }) {
   const [enableGuides, setEnableGuides] = useState(false);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <CenteredLayout>
         <PrintablePage
           users={users}
@@ -36,36 +42,43 @@ function HomePage({ users, teamIcon }) {
           enableGuides={enableGuides}
         />
       </CenteredLayout>
-      <div
-        className="no-print"
-        style={{
-          position: "fixed",
-          top: "0",
-          right: "0",
-          padding: "1rem",
-        }}
+      <button
+        className="print:hidden fixed rounded top-0 left-0 h-8 w-8 m-4 bg-white text-gray-900 hover:bg-gray-200 active:bg-gray-300 focus:outline-none focus:bg-gray-200 shadow"
+        onClick={() => setDrawerOpen(true)}
       >
-        <p>Layout Settings</p>
-        <div>
-          <label>Rows</label>
-          <input
-            name="rows"
-            type="number"
-            value={rows}
-            onChange={(e) => setRows(parseInt(e.target.value, 10))}
-          />
-        </div>
-        <div>
-          <label>Columns</label>
-          <input
-            name="columns"
-            type="number"
-            value={columns}
-            onChange={(e) => setColumns(parseInt(e.target.value, 10))}
-          />
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+      <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <div className="grid gap-y-4">
+          <div>
+            <ToggleSwitch
+              labelText="Show Guides"
+              name="showGuides"
+              checked={enableGuides}
+              onChange={(e) => setEnableGuides(!enableGuides)}
+            />
+          </div>
+          <div>
+            <label>Rows</label>
+            <Input
+              name="rows"
+              type="number"
+              value={rows}
+              onChange={(e) => setRows(parseInt(e.target.value, 10))}
+            />
+          </div>
+          <div>
+            <label>Columns</label>
+            <Input
+              name="columns"
+              type="number"
+              value={columns}
+              onChange={(e) => setColumns(parseInt(e.target.value, 10))}
+            />
+          </div>
           <div>
             <label>Page Height (in.)</label>
-            <input
+            <Input
               name="pageHeight"
               type="number"
               step={0.25}
@@ -76,7 +89,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Page Width (in.)</label>
-            <input
+            <Input
               name="pageWidth"
               type="number"
               step={0.25}
@@ -87,7 +100,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Page Margin Top (in.)</label>
-            <input
+            <Input
               name="pageMarginTop"
               type="number"
               step={0.25}
@@ -98,7 +111,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Page Margin Right (in.)</label>
-            <input
+            <Input
               name="pageMarginRight"
               type="number"
               step={0.25}
@@ -109,7 +122,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Page Margin Bottom (in.)</label>
-            <input
+            <Input
               name="pageMarginBottom"
               type="number"
               step={0.25}
@@ -120,7 +133,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Page Margin Left (in.)</label>
-            <input
+            <Input
               name="pageMarginLeft"
               type="number"
               step={0.25}
@@ -131,7 +144,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Row Gap (in.)</label>
-            <input
+            <Input
               name="rowGap"
               type="number"
               step={0.25}
@@ -142,7 +155,7 @@ function HomePage({ users, teamIcon }) {
           </div>
           <div>
             <label>Column Gap (in.)</label>
-            <input
+            <Input
               name="columnGap"
               type="number"
               step={0.25}
@@ -152,23 +165,14 @@ function HomePage({ users, teamIcon }) {
             />
           </div>
           <div>
-            <label>Nametag Padding</label>
-            <input
+            <label>Nametag Padding (in.)</label>
+            <Input
               name="nametagPadding"
               type="number"
               step={0.25}
               min={0.0}
               value={nametagPadding}
               onChange={(e) => setNametagPadding(parseFloat(e.target.value))}
-            />
-          </div>
-          <div>
-            <label>Enable Guides</label>
-            <input
-              name="enableGuides"
-              type="checkbox"
-              checked={enableGuides}
-              onChange={(e) => setEnableGuides(!enableGuides)}
             />
           </div>
 
@@ -181,7 +185,7 @@ function HomePage({ users, teamIcon }) {
             <li>Enable Background Graphics</li>
           </ul>
         </div>
-      </div>
+      </Drawer>
     </div>
   );
 }

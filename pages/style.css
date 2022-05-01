@@ -5,6 +5,7 @@
     }
 
     html, body {
+        background-image: none !important;
         background-color: initial !important;
     }
 
@@ -19,6 +20,7 @@ html, body {
     padding: 0;
     margin: 0;
     font-family: 'Lato', sans-serif;
+    background-image: url('/tiny_grid.webp');
     background-color: rgb(109, 109, 113);
 }
 
