@@ -10,6 +10,10 @@
   "description": "Generate printable nametags for users in your Slack workspace",
   "main": "index.js",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@slack/bolt": "^3.11.0",
     "dotenv": "^16.0.0",
     "lodash": "^4.17.21",
